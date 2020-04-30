@@ -1,27 +1,21 @@
 """Integration test of the `imgs2pdf.analyze` module."""
 
 import pathlib
+from typing import Sequence
 
 import pytest  # type: ignore
 
 from imgs2pdf import analyze
 
-THIS_DIR = pathlib.Path(__file__).resolve().parent
 
-
-def test_images() -> None:
-    """"""
-    input_images = [
-        THIS_DIR / "320x200.png",
-        THIS_DIR / "480x640.png",
-        THIS_DIR / "595x842.png",
-    ]
+def test_images(images: Sequence[pathlib.Path]) -> None:
+    """Test that the correct image sizes are extracted from reference images."""
     reference = [
         analyze.ImagePathWithSize(file, *[int(n) for n in file.stem.split("x")])
-        for file in input_images
+        for file in images
     ]
 
-    assert reference == analyze.images([str(fname) for fname in input_images])
+    assert reference == analyze.images([str(fname) for fname in images])
 
 
 def test_empty_sequence() -> None:

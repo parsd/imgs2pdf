@@ -5,7 +5,7 @@ Images are placed top-centered.
 
 from typing import Sequence
 
-from . import analyze
+from . import analyze, render
 
 
 def convert(image_fnames: Sequence[str], pdf_name: str) -> None:
@@ -18,3 +18,4 @@ def convert(image_fnames: Sequence[str], pdf_name: str) -> None:
     :raises FileNotFound: if one of the files in `image_fnames` could not be opened.
     """
     images = analyze.images(image_fnames)
+    render.images(images, pdf_name)

@@ -3,7 +3,7 @@
 import pathlib
 from typing import Iterator, NamedTuple, Sequence
 
-from PIL import Image
+from PIL import Image  # type: ignore
 
 
 class ImagePathWithSize(NamedTuple):
@@ -21,10 +21,10 @@ def images(fnames: Sequence[str]) -> Sequence[ImagePathWithSize]:
     :returns: Sequence of image file paths with the image's size.
     :raises FileNotFound: if one of the files in `fnames` cannot be opened.
     """
-    images: Iterator[Image] = (Image.open(fname) for fname in fnames)
+    imgs: Iterator[Image] = (Image.open(fname) for fname in fnames)
     return [
         ImagePathWithSize(
             pathlib.Path(image.filename).resolve(), image.width, image.height
         )
-        for image in images
+        for image in imgs
     ]

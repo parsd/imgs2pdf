@@ -3,3 +3,5 @@ param
 fnames
 pytest
 imgs
+stdout
+rb
