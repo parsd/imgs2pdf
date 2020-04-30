@@ -1,0 +1,22 @@
+[run]
+branch = True
+command_line = -m pytest
+source = .
+omit =
+    venv/*
+    main.py
+
+dynamic_context = test_function
+
+[report]
+sort = Cover
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise AssertionError
+    raise NotImplementedError
+    if __name__ == .__main__.:
+    if TYPE_CHECKING:
+
+[html]
+show_contexts = True

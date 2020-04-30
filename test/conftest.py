@@ -15,6 +15,7 @@ CREATION_DATE_RE = re.compile(rb"CreationDate \(D:[0-9]+\)")
 def images() -> Sequence[pathlib.Path]:
     """Get the test images."""
     return [
+        THIS_DIR / "200x320.png",
         THIS_DIR / "320x200.png",
         THIS_DIR / "480x640.png",
         THIS_DIR / "595x842.png",
