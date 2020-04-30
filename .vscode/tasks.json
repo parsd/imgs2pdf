@@ -1,0 +1,35 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run App Coverage",
+            "type": "shell",
+            "command": "${config:python.pythonPath}",
+            "args": [
+                "-m",
+                "coverage",
+                "run"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Create App HTML Coverage Report",
+            "type": "shell",
+            "command": "${config:python.pythonPath}",
+            "args": [
+                "-m",
+                "coverage",
+                "html"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
